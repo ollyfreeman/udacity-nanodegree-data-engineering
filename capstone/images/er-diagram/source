@@ -1,0 +1,56 @@
+// Tables
+Table immigration {
+  Id int [pk]
+  Port string
+  State string
+  Date date
+  DateOfDeparture date
+  CountryCitizenship string
+  CountryResidence string
+  ModeOfTravel string
+  Age int
+  YearOfBirth int
+  Gender string
+  Airline string
+  FlightNumber string
+  VisaCategory string
+  VisaType string
+}
+
+Table date {
+  Date date [pk]
+  Day int
+  Month int
+  Year int
+  DayOfWeek int
+  WeekOfYear int
+}
+
+Table us_state {
+  Code string [pk]
+  Name string
+  TotalPopulation int
+  MalePopulation int
+  FemalePopulation int
+  VeteranPopulation int
+  ForeignBornPopulation int
+  AmericanIndianAndAlaskaNativePopulation int
+  AsianPopulation int
+  BlackOrAfricanAmericanPopulation int
+  HispanicOrLatinoPopulation int
+  WhitePopulation int
+  AverageHouseholdSize int
+}
+
+Table country {
+  Code string [pk]
+  Name string
+  AverageTemperature int
+}
+
+// Create references
+Ref: immigration.Date - date.Date
+Ref: immigration.DateOfDeparture - date.Date
+Ref: immigration.State - us_state.Code
+Ref: immigration.CountryCitizenship - country.Code
+Ref: immigration.CountryResidence - country.Code
